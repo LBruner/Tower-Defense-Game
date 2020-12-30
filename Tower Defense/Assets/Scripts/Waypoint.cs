@@ -10,7 +10,7 @@ public class Waypoint : MonoBehaviour
     public bool isPlaceable = true;
 
     [SerializeField] Color exploredColor;
-    [SerializeField] Tower tower;
+    
 
     const int gridSize = 10;
 
@@ -22,20 +22,14 @@ public class Waypoint : MonoBehaviour
         {
             if (isPlaceable)
             {
-                SpawnTower();
+                FindObjectOfType<TowerFactory>().AddTower(this);
             }
                 
             else
                 Debug.Log("Cant Place Block");
         }
     }
-
-    private void SpawnTower()
-    {
-      var towerPlaced = Instantiate(tower, transform.position, Quaternion.identity);
-        isPlaceable = false;
-    }
-
+ 
     public int GetGridSize()
     {
         return gridSize;

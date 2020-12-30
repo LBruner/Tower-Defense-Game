@@ -14,6 +14,8 @@ public class Tower : MonoBehaviour
 
     public int damagePerShot = 5;
 
+    public Waypoint basewaypoint;
+
     //STATE
     Transform enemyTarget;
     private void Start()
@@ -36,13 +38,13 @@ public class Tower : MonoBehaviour
 
     private void SetTargetEnemy()
     {
-        var sceneEnemies = FindObjectsOfType<CollisionHandler>();
+        var sceneEnemies = FindObjectsOfType<EnemyDamage>();
         if (sceneEnemies.Length == 0)
             return;
 
         Transform closestEnemy = sceneEnemies[0].transform;
 
-        foreach (CollisionHandler testEnemy in sceneEnemies)
+        foreach (EnemyDamage testEnemy in sceneEnemies)
         {
             closestEnemy = GetClosestEnemy(closestEnemy.transform, testEnemy.transform);
         }

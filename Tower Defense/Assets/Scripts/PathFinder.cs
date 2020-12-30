@@ -47,8 +47,8 @@ public class PathFinder : MonoBehaviour
         Waypoint previous = endPos.exploredfrom;
         while(previous != startPos)
         {
-            previous = previous.exploredfrom;
             SetAsPath(previous);
+            previous = previous.exploredfrom;            
         }
 
         SetAsPath(startPos);
